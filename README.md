@@ -17,7 +17,9 @@ User interface for Upala protocol. Multipassport shows all available scores and 
 - querry Graph to get user id (Graph: "Get user UpalaID by address")
 - if no id, switch to "create id" screen
 - if there's an id, querry delegates (Graph: "Get owner and delegates for the Upala ID")
-- get 10 best scores for the user from DB (check [here](https://github.com/upala-digital-identity/db))
+- get all scores for the user from DB (check [here](https://github.com/upala-digital-identity/db))
+- get pool balances
+- get base scores
 - querry graph for group metadata (Graph "Get group metadata by address") and extract **title** for each group. See metaData structure in the [pool contract](https://github.com/upala-digital-identity/upala/blob/master/contracts/pools/simple-verification-pool.sol). 
 - if user clicks **"more..."** load next 10 best scores (11..20, 21..30, etc.)
 
@@ -55,5 +57,6 @@ User interface for Upala protocol. Multipassport shows all available scores and 
 
 #### "Explode" button 
 (after all precautions of the interface were passed - see [figma prototype](https://www.figma.com/file/L55604m75wk8Snl7PYlrwg/Multipassport-app?node-id=0%3A1) for the workflow)
-- select ABI depending on **poolType** (from **deployments**)
+- querry graph for the **poolFactoryAddress** (Graph: "Get poolFactoryAddress by group address")
+- select ABI depending on **poolFactoryAddress** (from [deployments](https://github.com/upala-digital-identity/deployments)) 
 - call attack function with proper arguments. E.g. **attack(address identityID, uint8 score, bytes calldata signature)** for **SignedScoresPool**
